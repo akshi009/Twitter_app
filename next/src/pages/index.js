@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Head from 'next/head';
-import NavigationBar from './nav'; // Correct file name 'nav.js'
-import SuggestedUsers from './suggested-users'; // Correct file name 'suggested-users.js'
+import NavigationBar from './nav'; 
+import SuggestedUsers from './suggested-users'; 
 import TweetForm from "./tweetform";
 import TweetList from "./tweetlist";
 
@@ -20,14 +20,14 @@ export default function Home() {
     <div>
       <Head>
         <title>Home</title>
-        {/* Add your meta tags and other head elements here */}
+        
       </Head>
 
       <NavigationBar />
 
-      {/* Your page content goes here */}
+     
       <main>
-        {/* Add more content here */}
+        
         <SuggestedUsers />
         <TweetForm onTweetSubmit={handleTweetSubmit} />
         <TweetList tweets={tweets} />
