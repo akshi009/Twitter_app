@@ -32,116 +32,110 @@ app.get("/user", async (req, res) => {
   }
 });
 
-// app.post("/post", async (req, res) => {
-  
-//   try {
-    
-//     const { userId, caption, image } = req.body;
-//     if (!userId || !caption) {
-//       return res.status(400).json({ error: "userId and caption are required fields" });
-//     }
-
-  
-//     const post = await prisma.post.create({
-//       data: {
-//         userId: userId,
-//         caption: caption,
-//         image: image, 
-//       },
-//     });
-
-//     res.status(201).json(post); 
-//   } catch (error) {
-//     console.error("Error creating post:", error);
-//     res.status(500).json({ error: "Internal Server Error" });
-//   }
-// });
-
-
 app.post("/post", async (req, res) => {
+  
   try {
-    const postDataArray = req.body;
-
-    if (!Array.isArray(postDataArray)) {
-      return res.status(400).json({ error: "Request body should be an array of posts" });
+    
+    const { userId, caption, image } = req.body;
+    if (!userId || !caption) {
+      return res.status(400).json({ error: "userId and caption are required fields" });
     }
 
-    
-    const createdPosts = [];
+  
+    const post = await prisma.post.create({
+      data: {
+        userId: userId,
+        caption: caption,
+        image: image, 
+      },
+    });
 
-    
-    for (const postData of postDataArray) {
-      const { userId, caption, image } = postData;
-
-      if (!userId || !caption) {
-        return res.status(400).json({ error: "userId and caption are required fields for each post" });
-      }
-
-      
-      const post = await prisma.post.create({
-        data: {
-          user: {
-            connect: { id: userId }, 
-          },
-          caption: caption,
-          image: image,
-        },
-      });
-
-      createdPosts.push(post);
-    }
-
-    
-    res.status(201).json(createdPosts);
+    res.status(201).json(post); 
   } catch (error) {
-    console.error("Error creating posts:", error);
+    console.error("Error creating post:", error);
     res.status(500).json({ error: "Internal Server Error" });
   }
 });
 
 
-
-
-
-
-
-
-
-
-// app.post("/user", async (req, res) => {
+// app.post("/post", async (req, res) => {
 //   try {
-//     const user = await prisma.user.create({
-//       data: req.body,
-//     });
-//     res.json(user);
+//     const postDataArray = req.body;
+
+//     if (!Array.isArray(postDataArray)) {
+//       return res.status(400).json({ error: "Request body should be an array of posts" });
+//     }
+
+    
+//     const createdPosts = [];
+
+    
+//     for (const postData of postDataArray) {
+//       const { userId, caption, image } = postData;
+
+//       if (!userId || !caption) {
+//         return res.status(400).json({ error: "userId and caption are required fields for each post" });
+//       }
+
+      
+//       const post = await prisma.post.create({
+//         data: {
+//           user: {
+//             connect: { id: userId }, 
+//           },
+//           caption: caption,
+//           image: image,
+//         },
+//       });
+
+//       createdPosts.push(post);
+//     }
+
+    
+//     res.status(201).json(createdPosts);
 //   } catch (error) {
-//     console.error("Error:", error);
-//     res.status(500).send("Internal Server Error");
+//     console.error("Error creating posts:", error);
+//     res.status(500).json({ error: "Internal Server Error" });
 //   }
 // });
 
 
+
+
 app.post("/user", async (req, res) => {
   try {
-    const usersArray = req.body;
-    
-    
-    const usersData = usersArray.map((user) => ({
-      name: user.name,
-      email: user.email,
-      image: user.image,
-    }));
-
-    const usersCreated = await prisma.user.createMany({
-      data: usersData,
+    const user = await prisma.user.create({
+      data: req.body,
     });
-
-    res.status(204).send(usersCreated);
-  } catch (e) {
-    console.error(e.message);
-    res.status(500).send(e.message);
+    res.json(user);
+  } catch (error) {
+    console.error("Error:", error);
+    res.status(500).send("Internal Server Error");
   }
 });
+
+
+// app.post("/user", async (req, res) => {
+//   try {
+//     const usersArray = req.body;
+    
+    
+//     const usersData = usersArray.map((user) => ({
+//       name: user.name,
+//       email: user.email,
+//       image: user.image,
+//     }));
+
+//     const usersCreated = await prisma.user.createMany({
+//       data: usersData,
+//     });
+
+//     res.status(204).send(usersCreated);
+//   } catch (e) {
+//     console.error(e.message);
+//     res.status(500).send(e.message);
+//   }
+// });
 
 
 
@@ -180,6 +174,8 @@ app.delete("/user/:id", async (req, res) => {
   }
 });
 
+
+
 app.patch("/user/:id", async (req, res) => {
   try {
     const updatedUser = await prisma.user.update({
@@ -192,6 +188,8 @@ app.patch("/user/:id", async (req, res) => {
     res.status(500).send("Internal Server Error");
   }
 });
+
+
 
 app.patch("/post/:id", async (req, res) => {
   try {

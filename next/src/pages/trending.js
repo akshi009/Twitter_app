@@ -66,13 +66,13 @@ function TrendingPage() {
   }
 
   function handleLikeClick(postId) {
-    // Increment the like count for the post
+    
     setPostLikes((prevLikes) => ({
       ...prevLikes,
       [postId]: prevLikes[postId] + 1,
     }));
 
-    // You can also send a request to your server to update the like count in the database here
+    
   }
 
   return (

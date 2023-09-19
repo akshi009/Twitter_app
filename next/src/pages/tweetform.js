@@ -50,7 +50,7 @@ const YourComponent = () => {
 
   return (
     <div className="your-component-container flex-col">
-      <div className="form-container mx-4 md:mx-10 my-10 p-4  shadow-xl w-full rounded-lg md:w-max lg:w-max">
+      <div className="form-container mx-4 md:mx-10 my-10 p-4 shadow-xl w-full rounded-lg md:w-max lg:w-max">
         <div>
           <div>
             <textarea
@@ -63,7 +63,7 @@ const YourComponent = () => {
             <textarea
               className="w-full mt-2 bg-gray-800 rounded-xl p-2 focus:outline-none"
               rows="3"
-              placeholder="Enter Caption"
+              placeholder="What's Happening?"
               value={postCaption}
               onChange={(e) => setPostCaption(e.target.value)}
             ></textarea>
@@ -75,7 +75,7 @@ const YourComponent = () => {
               onChange={(e) => setPostImage(e.target.value)}
             />
             <button
-              className="bg-blue-500 text-white py-2 px-4 mt-2 rounded-full hover:bg-blue-600 focus:outline-none mt-2"
+              className="bg-blue-500 text-white py-2 px-4  rounded-full hover:bg-blue-600 focus:outline-none mt-2"
               onClick={addTweet}
             >
               Add Post

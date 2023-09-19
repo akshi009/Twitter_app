@@ -73,7 +73,7 @@ const NavigationBar = () => {
  
 
   return (
-    <nav className="bg-zinc-950 p-3 fixed top-0 left-0 w-full z-50">
+    <nav className="bg-zinc-900 p-3 fixed top-0 left-0 w-full z-50">
       <div className="container mx-auto">
         <div className="flex justify-between items-center">
           <div className="text-white text-2xl font-semibold">Twitter</div>
@@ -101,7 +101,7 @@ const NavigationBar = () => {
                 <div className="user-list">
                   <div>
                     <input
-                      className="w-full mt-2 text-black bg-zinc-600 rounded-md p-2 focus:outline-none"
+                      className="w-full mt-2 text-white bg-zinc-600 rounded-md p-2 focus:outline-none"
                       type="text"
                       name="name"
                       placeholder="Name"
@@ -109,7 +109,7 @@ const NavigationBar = () => {
                       onChange={handleInputChange}
                     />
                     <input
-                      className="w-full mt-2 text-black bg-zinc-600 rounded-md p-2 focus:outline-none"
+                      className="w-full mt-2 text-white bg-zinc-600 rounded-md p-2 focus:outline-none"
                       type="text"
                       name="email"
                       placeholder="Email"
@@ -117,7 +117,7 @@ const NavigationBar = () => {
                       onChange={handleInputChange}
                     />
                     <input
-                       className="w-full mt-2 text-black bg-zinc-600 rounded-md p-2 focus:outline-none"
+                       className="w-full mt-2 text-white bg-zinc-600 rounded-md p-2 focus:outline-none"
                       name="image"
                       placeholder="Image URL"
                       value={newUser.image}
