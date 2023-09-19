@@ -3,7 +3,7 @@ import React, { useState } from "react";
 const YourComponent = () => {
   const [userId, setUserId] = useState("");
   const [postCaption, setPostCaption] = useState("");
-  const [postImage, setPostImage] = useState(""); 
+  const [postImage, setPostImage] = useState("");
   const [posts, setPosts] = useState([]);
 
   async function fetchPosts() {
@@ -30,7 +30,7 @@ const YourComponent = () => {
         body: JSON.stringify({
           userId: parseInt(userId),
           caption: postCaption,
-          image: postImage, 
+          image: postImage,
         }),
       });
 
@@ -38,7 +38,7 @@ const YourComponent = () => {
         await fetchPosts();
         setUserId("");
         setPostCaption("");
-        setPostImage(""); 
+        setPostImage("");
         window.location.reload();
       } else {
         console.error("Error adding tweet");
@@ -49,19 +49,19 @@ const YourComponent = () => {
   }
 
   return (
-    <div className="your-component-container">
-      <div className="form-container mx-12 p-4 shadow-xl w-full rounded-lg md:w-1/2 lg:w-1/2">
+    <div className="your-component-container flex-col">
+      <div className="form-container mx-4 md:mx-10 my-10 p-4  shadow-xl w-full rounded-lg md:w-max lg:w-max">
         <div>
           <div>
             <textarea
-              className="w-full bg-slate-900  rounded-md p-2 focus:outline-none"
-              rows="1"
+              className="w-full bg-gray-800 rounded-xl p-2 focus:outline-none"
+              rows="2"
               placeholder="Enter User ID"
               value={userId}
               onChange={(e) => setUserId(e.target.value)}
             ></textarea>
             <textarea
-              className="w-full mt-2 bg-slate-900 rounded-md p-2 focus:outline-none"
+              className="w-full mt-2 bg-gray-800 rounded-xl p-2 focus:outline-none"
               rows="3"
               placeholder="Enter Caption"
               value={postCaption}
@@ -69,14 +69,13 @@ const YourComponent = () => {
             ></textarea>
             <input
               type="text"
-              
-              className="w-full mt-2 bg-slate-900 rounded-md p-2 focus:outline-none"
-              placeholder="Enter Image URL (Optional)" 
+              className="w-full mt-2 bg-gray-800 rounded-xl p-2 focus:outline-none"
+              placeholder="Enter Image URL (Optional)"
               value={postImage}
               onChange={(e) => setPostImage(e.target.value)}
             />
             <button
-              className="bg-blue-500 text-white py-2 px-4 rounded-full hover:bg-blue-600 focus:outline-none mt-2"
+              className="bg-blue-500 text-white py-2 px-4 mt-2 rounded-full hover:bg-blue-600 focus:outline-none mt-2"
               onClick={addTweet}
             >
               Add Post

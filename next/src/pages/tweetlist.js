@@ -8,6 +8,7 @@ function App() {
     email: "",
     image: "",
   });
+  const [postLikes, setPostLikes] = useState({});
 
   useEffect(() => {
     fetchUsers();
@@ -33,8 +34,14 @@ function App() {
       const response = await fetch("http://localhost:3005/post");
       if (response.ok) {
         const data = await response.json();
-        // Reverse the array to display newly created posts at the top
         setPosts(data.reverse());
+
+     
+        const initialLikes = {};
+        data.forEach((post) => {
+          initialLikes[post.id] = post.likes;
+        });
+        setPostLikes(initialLikes);
       } else {
         console.error("Error fetching posts");
       }
@@ -60,7 +67,7 @@ function App() {
           email: "",
           image: "",
         });
-        // Fetch posts again to get the updated list with the new post at the top
+
         fetchPosts();
       } else {
         console.error("Error creating user");
@@ -80,18 +87,27 @@ function App() {
         throw new Error("Error deleting post");
       }
 
-      // Filter the deleted post out of the posts array
       setPosts((prevPosts) => prevPosts.filter((post) => post.id !== postId));
     } catch (error) {
       console.error("Error deleting post:", error);
     }
   }
 
+  function handleLikeClick(postId) {
+   
+    setPostLikes((prevLikes) => ({
+      ...prevLikes,
+      [postId]: prevLikes[postId] + 1,
+    }));
+
+    
+  }
+
   return (
-    <div className="App flex flex-col">
-      <div className="post-container">
+    <div className="App flex flex-col -my-8 ">
+      <div className="post-container ">
         {posts.map((post) => (
-          <div className="post-card bg-slate-900" key={post.id}>
+          <div className="post-card bg-zinc-900" key={post.id}>
             <div className="user-info">
               <img
                 src={post.user.image}
@@ -101,6 +117,9 @@ function App() {
               <div className="user-details">
                 <p className="user-name text-white">{post.user.name}</p>
                 <p className="user-email">@{post.user.email}</p>
+                <p className="user-create text-gray-500  mx-auto">
+                {post.createdAt}
+              </p>
               </div>
             </div>
             <div className="post-content">
@@ -109,20 +128,27 @@ function App() {
                 <img
                   src={post.image}
                   alt="Post"
-                  className="w-full h-auto max-h-96 object-cover"
+                  className="w-full h-auto max-h-96 rounded-xl object-cover"
                 />
               )}
             </div>
-            <div className="post-actions">
-              <button className="action-button">Like</button>
+            <div className="post-actions flex-col  ">
+              <div className="flex -mx-2 mt-5">
+              <div className="flex-row">
+               <button
+                className="action-button"
+                onClick={() => handleLikeClick(post.id)}
+               >
+                Like
+               </button>
+               <p className="user-likes">{postLikes[post.id]} Likes</p></div>
               <button
-                className="bg-red-500 text-white py-2 px-4 rounded-full hover:bg-red-600 focus:outline-none"
+                className="bg-red-500 text-white py-2 h-10 px-4 rounded-full hover:bg-red-600 focus:outline-none"
                 onClick={() => deletePost(post.id)}
               >
                 DELETE
-              </button>
-              <p className="user-likes">{post.likes}</p>
-              <p className="user-create text-gray-500 mt-3 mx-auto">{post.createdAt}</p>
+              </button></div>
+              
             </div>
           </div>
         ))}
