@@ -1,10 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 const YourComponent = () => {
   const [userId, setUserId] = useState("");
   const [postCaption, setPostCaption] = useState("");
   const [postImage, setPostImage] = useState("");
   const [posts, setPosts] = useState([]);
+
+ 
+  useEffect(() => {
+    fetchPosts();
+  }, []);
 
   async function fetchPosts() {
     try {
@@ -35,11 +40,13 @@ const YourComponent = () => {
       });
 
       if (response.ok) {
+     
         await fetchPosts();
+       
         setUserId("");
         setPostCaption("");
         setPostImage("");
-        window.location.reload();
+        window.location.href="./";
       } else {
         console.error("Error adding tweet");
       }
@@ -75,13 +82,22 @@ const YourComponent = () => {
               onChange={(e) => setPostImage(e.target.value)}
             />
             <button
-              className="bg-blue-500 text-white py-2 px-4  rounded-full hover:bg-blue-600 focus:outline-none mt-2"
+              className="bg-blue-500 text-white py-2 px-4 rounded-full hover:bg-blue-600 focus:outline-none mt-2"
               onClick={addTweet}
             >
               Add Post
             </button>
           </div>
         </div>
+      </div>
+
+     
+      <div className="post-list">
+        {posts.map((post) => (
+          <div key={post.id}>
+           
+          </div>
+        ))}
       </div>
     </div>
   );

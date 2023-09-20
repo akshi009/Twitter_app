@@ -61,7 +61,7 @@ const SuggestedUsers = () => {
                         Follow
                       </button>
                     </div>
-                    <p className="text-sm  font-normal text-gray-500">@{user.email}</p>
+                    <p className="text-sm font-normal text-gray-500">@{user.email}</p>
                   </div>
                 </div>
               </li>
