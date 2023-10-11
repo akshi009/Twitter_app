@@ -17,7 +17,7 @@ function App() {
 
   async function fetchUsers() {
     try {
-      const response = await fetch("http://localhost:3005/user");
+      const response = await fetch(U_PATH/user);
       if (response.ok) {
         const data = await response.json();
         setUsers(data);
@@ -31,7 +31,7 @@ function App() {
 
   async function fetchPosts() {
     try {
-      const response = await fetch("http://localhost:3005/post");
+      const response = await fetch("https://akshijain.vercel.app/post");
       if (response.ok) {
         const data = await response.json();
         setPosts(data.reverse());
@@ -52,7 +52,7 @@ function App() {
 
   async function createUser() {
     try {
-      const response = await fetch("http://localhost:3005/user", {
+      const response = await fetch(U_PATH/user, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -79,7 +79,7 @@ function App() {
 
   async function deletePost(postId) {
     try {
-      const response = await fetch(`http://localhost:3005/post/${postId}`, {
+      const response = await fetch(`https://akshijain.vercel.app/post/${postId}`, {
         method: "DELETE",
       });
 

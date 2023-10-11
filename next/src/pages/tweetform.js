@@ -13,7 +13,7 @@ const YourComponent = () => {
 
   async function fetchPosts() {
     try {
-      const response = await fetch("http://localhost:3005/post");
+      const response = await fetch("https://akshijain.vercel.app/post");
       if (response.ok) {
         const data = await response.json();
         setPosts(data);
@@ -27,7 +27,7 @@ const YourComponent = () => {
 
   async function addTweet() {
     try {
-      const response = await fetch("http://localhost:3005/post", {
+      const response = await fetch("https://akshijain.vercel.app/post", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
