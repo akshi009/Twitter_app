@@ -1,3 +1,4 @@
+import { API_URL } from "@/config";
 import React, { useEffect, useState } from "react";
 
 function App() {
@@ -9,7 +10,7 @@ function App() {
     image: "",
   });
   const [postLikes, setPostLikes] = useState({});
-
+  console.log("testing", API_URL);
   useEffect(() => {
     fetchUsers();
     fetchPosts();
@@ -17,7 +18,7 @@ function App() {
 
   async function fetchUsers() {
     try {
-      const response = await fetch(U_PATH/user);
+      const response = await fetch(API_URL +  "/user");
       if (response.ok) {
         const data = await response.json();
         setUsers(data);
@@ -31,12 +32,11 @@ function App() {
 
   async function fetchPosts() {
     try {
-      const response = await fetch("https://akshijain.vercel.app/post");
+      const response = await fetch(API_URL + "/post");
       if (response.ok) {
         const data = await response.json();
         setPosts(data.reverse());
 
-     
         const initialLikes = {};
         data.forEach((post) => {
           initialLikes[post.id] = post.likes;
@@ -52,7 +52,7 @@ function App() {
 
   async function createUser() {
     try {
-      const response = await fetch(U_PATH/user, {
+      const response = await fetch(API_URL + "/user", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -79,7 +79,7 @@ function App() {
 
   async function deletePost(postId) {
     try {
-      const response = await fetch(`https://akshijain.vercel.app/post/${postId}`, {
+      const response = await fetch(API_URL + `/post/${postId}`, {
         method: "DELETE",
       });
 
@@ -94,13 +94,10 @@ function App() {
   }
 
   function handleLikeClick(postId) {
-   
     setPostLikes((prevLikes) => ({
       ...prevLikes,
       [postId]: prevLikes[postId] + 1,
     }));
-
-    
   }
 
   return (
@@ -118,8 +115,8 @@ function App() {
                 <p className="user-name text-white">{post.user.name}</p>
                 <p className="user-email">@{post.user.email}</p>
                 <p className="user-create text-gray-500  mx-auto">
-                {post.createdAt}
-              </p>
+                  {post.createdAt}
+                </p>
               </div>
             </div>
             <div className="post-content">
@@ -134,21 +131,22 @@ function App() {
             </div>
             <div className="post-actions flex-col  ">
               <div className="flex -mx-2 mt-5">
-              <div className="flex-row">
-               <button
-                className="action-button"
-                onClick={() => handleLikeClick(post.id)}
-               >
-                Like
-               </button>
-               <p className="user-likes">{postLikes[post.id]} Likes</p></div>
-              <button
-                className="bg-red-500 text-white py-2 h-10 px-4 rounded-full hover:bg-red-600 focus:outline-none"
-                onClick={() => deletePost(post.id)}
-              >
-                DELETE
-              </button></div>
-              
+                <div className="flex-row">
+                  <button
+                    className="action-button"
+                    onClick={() => handleLikeClick(post.id)}
+                  >
+                    Like
+                  </button>
+                  <p className="user-likes">{postLikes[post.id]} Likes</p>
+                </div>
+                <button
+                  className="bg-red-500 text-white py-2 h-10 px-4 rounded-full hover:bg-red-600 focus:outline-none"
+                  onClick={() => deletePost(post.id)}
+                >
+                  DELETE
+                </button>
+              </div>
             </div>
           </div>
         ))}

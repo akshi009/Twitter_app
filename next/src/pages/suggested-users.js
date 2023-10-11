@@ -1,3 +1,4 @@
+import { API_URL } from '@/config';
 import React, { useState, useEffect } from 'react';
 
 const SuggestedUsers = () => {
@@ -23,11 +24,11 @@ const SuggestedUsers = () => {
 
   async function fetchUsers() {
     try {
-      const response = await fetch("http://localhost:3005/user");
+      const response = await fetch(API_URL + "/user");
       if (response.ok) {
         const data = await response.json();
         
-        const first5Users = data.slice(0, 5);
+        const first5Users = data.slice(3,8);
 
         setSuggestedUsers(first5Users);
       } else {

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { API_URL } from "@/config";
 
 const YourComponent = () => {
   const [userId, setUserId] = useState("");
@@ -13,7 +14,7 @@ const YourComponent = () => {
 
   async function fetchPosts() {
     try {
-      const response = await fetch("https://akshijain.vercel.app/post");
+      const response = await fetch(API_URL + "/post");
       if (response.ok) {
         const data = await response.json();
         setPosts(data);
@@ -27,7 +28,7 @@ const YourComponent = () => {
 
   async function addTweet() {
     try {
-      const response = await fetch("https://akshijain.vercel.app/post", {
+      const response = await fetch(API_URL + "/post", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

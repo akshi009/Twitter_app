@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { API_URL } from '@/config';
 
 const NavigationBar = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -16,7 +17,7 @@ const NavigationBar = () => {
 
   async function fetchUsers() {
     try {
-      const response = await fetch('http://localhost:3005/user');
+      const response = await fetch(API_URL + "/user");
       if (response.ok) {
         const data = await response.json();
         setUsers(data);
@@ -30,7 +31,7 @@ const NavigationBar = () => {
 
   async function createUser() {
     try {
-      const response = await fetch('http://localhost:3005/user', {
+      const response = await fetch(API_URL + "/user", {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
