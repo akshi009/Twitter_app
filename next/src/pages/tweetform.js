@@ -57,7 +57,7 @@ const YourComponent = () => {
   }
 
   return (
-    <div className="your-component-container flex">
+    <div className="your-component-container flex-col">
       <div className="form-container mx-4 md:mx-10 my-10 p-4 shadow-xl w-full rounded-lg md:w-max lg:w-max sm:mt-10">
         <div>
           <div className="my-10">
