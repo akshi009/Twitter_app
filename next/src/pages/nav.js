@@ -134,9 +134,14 @@ const NavigationBar = () => {
                         <div className="post-card mt-2 bg-slate-300 border text-white">
                           <div className="user-info">
                             <img
-                              src={user.image}
-                              alt={user.name}
-                              className="user-avatar"
+                              <img src={user.image} alt={user.name} className="user-avatar" />
+        ) : (
+          <img
+            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMQAAACUCAMAAAD79nauAAAAWlBMVEXy8vJmZmb19fVjY2P6+vpwcHBTU1Pg4OBWVlbT09NqampZWVmWlpbu7u6QkJDBwcFeXl7a2tqHh4d+fn6ysrKlpaXMzMx2dnbo6Oi7u7udnZ2srKxNTU1AQEA04dAvAAAGNElEQVR4nO2c53arOhBGxWgIpghEE+3c93/NOwLcAdsrQSLn6PtBljGQ2UxRQZgxJycnJycnJycnJycnJycnJycnJycnJycnJ6d/TrCXzAGINthLgpngAMCsjE/xaR/5gzBBgVkcf+0mGae4PwMEjWyycC8V/E+4vytAcU/hXnmNbXmq93cFZDwK9rpXdN00ToxAeLtBMBDpyQzEfp5gTJjyhIN4IQfxthzEa1mFAPYznVCLEIDhkBZJ9X0X2YMAUXuxJDXZdymsQVAzK7nn8cjjsvsmhT2I4eSdFX+zD2oLAgTnFwhZbJoAiLhJaQ1CnSIvumCIjZOx7eoq2MKwBYG19K6S+YqJoPP/Tyzjr7Rdp7AHEd9A8DUIUhKTx6IoLtfH0dYgstOtJ1ZvM3aST1En69WIslad2htPyHLNBAhO3JsrgMzWGndrENhfk0KqFRNAlNcaxv21tt1eO9GWcq5Ocb163iCvEN7qxIy1EkuRUkhOknxYm8BDdYOgKbplU612ALu0LIskX02INrqH8KLlpt1qVxxZGwhc/feYxvcM1LQvljHLg6KtwQR2/MERY51dOPK4IzsI/ScGz/taKmSHhQBRyOgZgjcLAXVYCBzkMwK1e7L/PRCoHpN6pohOz3X2oBDUFC4kxITBn650VIh6KZjOdfaxph0TArPYW/MEUQy/AQLEckJcpO59cUQIgHQ9mMa0aNiRIPQUwNN+qLYZKKDubbYJAULVRdJR63XfwQ295/7Gg+K7CTebvViRcillXIYPzmjOI9KtgAoOAUH9ijF9I+mHtxaMUwgvPBFxmdxczurIjqzRkcOlun6HmSSEV56ggBquZtubASyu2cv5ebADLGhe5c
+
+
+
+
                             />
                             <div className="user-details">
                               <div className='flex-col'>
