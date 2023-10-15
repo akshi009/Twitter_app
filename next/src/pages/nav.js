@@ -40,7 +40,9 @@ const NavigationBar = () => {
       });
 
       if (response.ok) {
-        await fetchUsers();
+        const createdUser = await response.json();
+        // Add the new user to the beginning of the users array
+        setUsers([createdUser, ...users]);
         setNewUser({
           name: '',
           email: '',
@@ -70,16 +72,12 @@ const NavigationBar = () => {
     });
   };
 
-  
- 
-
   return (
     <nav className="bg-zinc-900 p-3 fixed top-0 left-0 w-full z-50">
       <div className="container mx-auto">
         <div className="flex justify-between items-center">
           <div className="text-white text-2xl font-semibold">Twitter</div>
           <div className="space-x-4">
-          {/* <Link href="/trending">Trending</Link> */}
             <button
               className="bg-blue-500 text-white py-2 px-3 rounded-full hover:bg-blue-600 focus:outline-none"
               onClick={openSidebar}
@@ -89,14 +87,13 @@ const NavigationBar = () => {
 
             {isSidebarOpen && (
               <div className={`sidebar bg-zinc-900 ${isSidebarOpen ? 'w-max md:min-w-0' : ''}`}>
-                 <div className="flex justify-end">
+                <div className="flex justify-end">
                   <button
                     className="bg-red-500 text-white py-2 px-4 rounded-full hover:bg-red-600 focus:outline-none"
                     onClick={closeSidebar}
                   >
                     X
                   </button>
-                 
                 </div>
 
                 <div className="user-list">
@@ -118,19 +115,20 @@ const NavigationBar = () => {
                       onChange={handleInputChange}
                     />
                     <input
-                       className="w-full mt-2 text-white bg-zinc-600 rounded-md p-2 focus:outline-none"
+                      className="w-full mt-2 text-white bg-zinc-600 rounded-md p-2 focus:outline-none"
                       name="image"
                       placeholder="Image URL"
                       value={newUser.image}
                       onChange={handleInputChange}
                     />
                     <div className="flex justify-end">
-                    <button className="bg-green-500 mt-2 text-white py-2 px-4 rounded-full hover:bg-green-600 end-0 focus:outline-none" onClick={createUser}>
-                      Create User
-                    </button></div>
+                      <button className="bg-green-500 mt-2 text-white py-2 px-4 rounded-full hover:bg-green-600 end-0 focus:outline-none" onClick={createUser}>
+                        Create User
+                      </button>
+                    </div>
                   </div>
                   <ul>
-                    {users.map((user) => (
+                    {users.reverse().map((user) => (
                       <li key={user.id}>
                         <div className="post-card mt-2 bg-slate-300 border text-white">
                           <div className="user-info">
@@ -141,8 +139,9 @@ const NavigationBar = () => {
                             />
                             <div className="user-details">
                               <div className='flex-col'>
-                              <p className="user-name font-semibold text-black">{user.id}</p>
-                              <p className="user-name font-semibold text-black">{user.name}</p></div>
+                                <p className="user-name font-semibold text-black">{user.id}</p>
+                                <p className="user-name font-semibold text-black">{user.name}</p>
+                              </div>
                               <p className="user-email text-gray-500">@{user.email}</p>
                               <button className="bg-blue-500 text-white- font-medium px-4 py-2 right-0 mx-60 -my- rounded-3xl text-xs">
                                 Follow
@@ -164,4 +163,3 @@ const NavigationBar = () => {
 };
 
 export default NavigationBar;
-  
