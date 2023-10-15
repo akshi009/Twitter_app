@@ -47,7 +47,7 @@ const NavigationBar = () => {
           image: '',
         });
       
-        // Add the new user to the beginning of the users array
+        
         setUsers([createdUser, ...users]);
       } else {
         console.error('Error creating user');
