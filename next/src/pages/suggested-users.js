@@ -28,7 +28,7 @@ const SuggestedUsers = () => {
       if (response.ok) {
         const data = await response.json();
         
-        const first5Users = data.slice(3,8);
+        const first5Users = data.slice(-5);
 
         setSuggestedUsers(first5Users);
       } else {
