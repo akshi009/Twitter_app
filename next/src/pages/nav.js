@@ -134,10 +134,12 @@ const NavigationBar = () => {
                         <div className="post-card mt-2 bg-slate-300 border text-white">
                           <div className="user-info">
                             <img
-                              src={user.image || "https://banffventureforum.com/wp-content/uploads/2019/08/No-Image.png"}
-                              alt={user.name}
-                              className="user-avatar"
-                            />
+  src={user.image || "https://banffventureforum.com/wp-content/uploads/2019/08/No-Image.png"}
+  alt={user.name}
+  className="user-avatar"
+  style={{ width: "100px", height: "100px" }} 
+/>
+
                             <div className="user-details">
                               <div className='flex-col'>
                                 <p className="user-name font-semibold text-black">{user.id}</p>
