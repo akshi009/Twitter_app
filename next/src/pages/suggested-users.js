@@ -51,7 +51,7 @@ const SuggestedUsers = () => {
               <li key={user.id}>
                 <div className="flex items-center space-x-2 mb-2">
                   <img
-                    src={user.image}
+                     src={user.image || "https://artscimedia.case.edu/wp-content/uploads/sites/79/2016/12/14205134/no-user-image.gif"}
                     alt={user.name}
                     className="w-12 h-12 rounded-full"
                   />

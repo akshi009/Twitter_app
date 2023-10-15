@@ -107,7 +107,7 @@ function App() {
           <div className="post-card bg-zinc-900" key={post.id}>
             <div className="user-info">
               <img
-                src={post.user.image}
+                src={user.image || "https://artscimedia.case.edu/wp-content/uploads/sites/79/2016/12/14205134/no-user-image.gif"}
                 alt={post.user.name}
                 className="user-avatar"
               />

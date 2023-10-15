@@ -134,10 +134,10 @@ const NavigationBar = () => {
                         <div className="post-card mt-2 bg-slate-300 border text-white">
                           <div className="user-info">
                             <img
-  src={user.image || "https://www.oyostatejudiciary.oy.gov.ng/wp-content/uploads/2022/04/360_F_434728286_OWQQvAFoXZLdGHlObozsolNeuSxhpr84.jpg"}
+  src={user.image || "https://artscimedia.case.edu/wp-content/uploads/sites/79/2016/12/14205134/no-user-image.gif"}
   alt={user.name}
   className="user-avatar"
-  style={{ width: "20px", height: "20px" }} 
+  style={{ width: "50px", height: "50px" }} 
 />
 
                             <div className="user-details">
