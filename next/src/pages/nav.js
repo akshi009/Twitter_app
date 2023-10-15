@@ -137,7 +137,7 @@ const NavigationBar = () => {
   src={user.image || "https://www.oyostatejudiciary.oy.gov.ng/wp-content/uploads/2022/04/360_F_434728286_OWQQvAFoXZLdGHlObozsolNeuSxhpr84.jpg"}
   alt={user.name}
   className="user-avatar"
-  style={{ width: "100px", height: "100px" }} 
+  style={{ width: "20px", height: "20px" }} 
 />
 
                             <div className="user-details">
