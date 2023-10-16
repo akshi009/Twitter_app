@@ -7,11 +7,11 @@ const cors = require("cors");
 app.use(express.json());
 // app.use(cors());
 
-// app.use((req, res, next) => {
-//   res.setHeader('Access-Control-Allow-Origin', 'https://twitter-akshi.vercel.app');
+app.use((req, res, next) => {
+  res.setHeader('Access-Control-Allow-Origin', 'https://twitter-akshi.vercel.app');
   
-//   next();
-// });
+  next();
+});
 
 const PORT = process.env.PORT || 3005;
 app.listen(PORT, () => console.log(`🚀 @ https://dbtwitter.up.railway.app`));
