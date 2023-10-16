@@ -103,7 +103,7 @@ const NavigationBar = () => {
                       className="w-full mt-2 text-white bg-zinc-600 rounded-md p-2 focus:outline-none"
                       type="text"
                       name="name"
-                      placeholder="Name"
+                      placeholder="Name (Atleast 4 characters)"
                       value={newUser.name}
                       onChange={handleInputChange}
                     />
@@ -111,7 +111,7 @@ const NavigationBar = () => {
                       className="w-full mt-2 text-white bg-zinc-600 rounded-md p-2 focus:outline-none"
                       type="text"
                       name="email"
-                      placeholder="Email"
+                      placeholder="Email (required)"
                       value={newUser.email}
                       onChange={handleInputChange}
                     />
@@ -145,7 +145,7 @@ const NavigationBar = () => {
                                 <p className="user-name font-semibold text-black">{user.id}</p>
                                 <p className="user-name font-semibold text-black">{user.name}</p>
                               </div>
-                              <p className="user-email text-gray-500">@{user.email}</p>
+                              <p className="user-email text-gray-500">{user.email}</p>
                               <button className="bg-blue-500 text-white- font-medium px-4 py-2 right-0 mx-60 -my- rounded-3xl text-xs">
                                 Follow
                               </button>
