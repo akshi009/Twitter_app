@@ -107,13 +107,13 @@ function App() {
           <div className="post-card bg-zinc-900" key={post.id}>
             <div className="user-info">
               <img
-                src={post.user.image}
+                src={post.user.image || "https://artscimedia.case.edu/wp-content/uploads/sites/79/2016/12/14205134/no-user-image.gif"}
                 alt={post.user.name}
                 className="user-avatar"
               />
               <div className="user-details">
                 <p className="user-name text-white">{post.user.name}</p>
-                <p className="user-email">@{post.user.email}</p>
+                <p className="user-email">{post.user.email}</p>
                 <p className="user-create text-gray-500  mx-auto">
                   {post.createdAt}
                 </p>
